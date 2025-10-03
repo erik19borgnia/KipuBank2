@@ -1,0 +1,454 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint128",
+						"name": "_banckCap",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "DepositNotAllowed",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "ExtractionNotAllowed",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "errorData",
+						"type": "bytes"
+					}
+				],
+				"name": "ExtractionReverted",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					}
+				],
+				"name": "NotAnAuditor",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "DepositRequest",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Deposited",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Extracted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "ExtractionRequest",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "deposit",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "balance_",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user_",
+						"type": "address"
+					}
+				],
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "balance_",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getDeposits",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "deposits_",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user_",
+						"type": "address"
+					}
+				],
+				"name": "getDeposits",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "deposits_",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user_",
+						"type": "address"
+					}
+				],
+				"name": "getWithdrawals",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "withdrawals_",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getWithdrawals",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "withdrawals_",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "s_bankCap",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "s_owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "s_withdrawLimit",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount_",
+						"type": "uint256"
+					}
+				],
+				"name": "withdraw",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"author": "Erik Borgnia",
+			"kind": "dev",
+			"methods": {
+				"getBalance(address)": {
+					"details": "Esta función garantiza que toda la información es auditable",
+					"params": {
+						"user_": "Usuario que se quiere auditar"
+					}
+				},
+				"getDeposits(address)": {
+					"details": "Esta función garantiza que toda la información es auditable",
+					"params": {
+						"user_": "Usuario que se quiere auditar"
+					}
+				},
+				"getWithdrawals(address)": {
+					"details": "Esta función garantiza que toda la información es auditable",
+					"params": {
+						"user_": "Usuario que se quiere auditar"
+					}
+				},
+				"withdraw(uint256)": {
+					"details": "Sólo se puede depositar un valor mayor a 0, siempre que no se supere el bankCap",
+					"params": {
+						"amount_": "Cantidad que se quiere extraer. Debe ser <= al balance y al límite de extracción"
+					}
+				}
+			},
+			"title": "KipuBank",
+			"version": 1
+		},
+		"userdoc": {
+			"errors": {
+				"DepositNotAllowed(address,uint256)": [
+					{
+						"notice": "Error emitido cuando se intenta depositar una cantidad inválida (=0, o la cuenta superaría el bankCap)"
+					}
+				],
+				"ExtractionNotAllowed(address,uint256)": [
+					{
+						"notice": "Error emitido cuando se intenta extraer una cantidad inválda (<=0, >saldo, >límite)"
+					}
+				],
+				"ExtractionReverted(address,uint256,bytes)": [
+					{
+						"notice": "Error emitido cuando falla una extracción"
+					}
+				],
+				"NotAnAuditor(address)": [
+					{
+						"notice": "Error emitido al querer auditar y no tener el permiso"
+					}
+				]
+			},
+			"events": {
+				"DepositRequest(address,uint256)": {
+					"notice": "Evento emitido al intentar depositar"
+				},
+				"Deposited(address,uint256)": {
+					"notice": "Evento emitido al depositar exitosamente"
+				},
+				"Extracted(address,uint256)": {
+					"notice": "Evento emitido al extraer exitosamente"
+				},
+				"ExtractionRequest(address,uint256)": {
+					"notice": "Evento emitido al intentar extraer"
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"deposit()": {
+					"notice": "Función para hacer un depósitoSólo se puede depositar un valor mayor a 0, siempre que no se supere el bankCap"
+				},
+				"getBalance()": {
+					"notice": "Función pública para ver el balance que uno mismo tiene"
+				},
+				"getBalance(address)": {
+					"notice": "Función pública para ver el balance que algún usuario tiene"
+				},
+				"getDeposits()": {
+					"notice": "Función pública para ver la cantidad de depósitos que uno hizo"
+				},
+				"getDeposits(address)": {
+					"notice": "Función pública para ver la cantidad de depósitos que algún usuario hizo"
+				},
+				"getWithdrawals()": {
+					"notice": "Función pública para ver la cantidad de extracciones que uno hizo"
+				},
+				"getWithdrawals(address)": {
+					"notice": "Función pública para ver la cantidad de extracciones que algún usuario hizo"
+				},
+				"s_bankCap()": {
+					"notice": "Límite de balance por cuenta"
+				},
+				"s_owner()": {
+					"notice": "Dueño del contrato, auditor del mismo"
+				},
+				"s_withdrawLimit()": {
+					"notice": "Límite de extracción por cuenta"
+				},
+				"withdraw(uint256)": {
+					"notice": "Función para hacer un depósito"
+				}
+			},
+			"notice": "Contrato para el TP Final del Módulo 2 del curso de EthKipuEs una simulación de banco con depósitos y extracción, auditable por el dueño del contrato",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/KipuBank.sol": "KipuBank"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/KipuBank.sol": {
+			"keccak256": "0x3db3d9a7aae0e3c00c24e6308483dd1991b7a31708355f3123bf7bf7f4c7cac9",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://956b7845a8656421768e7aaf2de184a13171c503b88e983e34273ae81820d54a",
+				"dweb:/ipfs/QmcREwDzg3AftD65q4bLSN2ikrACgLfRC4pUmnrU8KdWGw"
+			]
+		}
+	},
+	"version": 1
+}
